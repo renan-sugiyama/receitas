@@ -50,23 +50,24 @@ const renderIngredientes = (ingredientes) => {
     const listaIngredientes = document.querySelector('#lista-ingredientes')
     
     if(ingredientes.length === 0) {
-        return
-    }
-    ingredientes.forEach(ingrediente => {
+        listaIngredientes.innerHTML = `<div class="col-md-9">Nenhum ingrediente cadastrado</div>`
+    }else {
+        ingredientes.forEach(ingrediente => {
+            
+            ingredienteHtml += 
+            `<div class="col-md-9">
+                <input type="checkbox" name="" id="ingrediente#${ingrediente.id}" ${ingrediente.tenho === true ? 'checked' : ''} autocomplete="off">                                    
+                <span>${ingrediente.quantidade} - </span>
+                <span>${ingrediente.nome}</span>
+            </div>
+            <div class="col-md-3">
+                <span id="${ingrediente.id}">Deletar</span>
+            </div>`
+        });
+        console.log(ingredienteHtml)
         
-        ingredienteHtml += 
-        `<div class="col-md-9">
-            <input type="checkbox" name="" id="ingrediente#${ingrediente.id}" ${ingrediente.tenho === true ? 'checked' : ''} autocomplete="off">                                    
-            <span>${ingrediente.quantidade} - </span>
-            <span>${ingrediente.nome}</span>
-        </div>
-        <div class="col-md-3">
-            <a href="#">Deletar</a>
-        </div>`
-    });
-    console.log(ingredienteHtml)
-    
-    listaIngredientes.innerHTML = ingredienteHtml
+        listaIngredientes.innerHTML = ingredienteHtml
+    }
 }
 
 

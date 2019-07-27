@@ -1,5 +1,5 @@
 import { iniciaEditPage, renderIngredientes } from './views'
-import { getReceita, addIngredientes, saveReceitas, atualizaReceita } from './receitas'
+import { getReceita, addIngredientes, atualizaReceita, removeIngrediente, getReceitas } from './receitas'
 import uuidv4 from 'uuid/v4'
 
 
@@ -10,7 +10,7 @@ document.querySelector('#addIgrediente').addEventListener('click', (e) => {
     let quantidade = document.querySelector('#ingrediente-quantidade') 
     const receitaId = location.hash.substring(1)
     const novosIngredientes = {
-        id: uuidv4(),
+        id: 'i' + uuidv4(),
         nome: nome.value,
         quantidade: quantidade.value,
         "tenho": true
@@ -19,6 +19,7 @@ document.querySelector('#addIgrediente').addEventListener('click', (e) => {
     renderIngredientes(getReceita(receitaId).ingredientes)
     nome.value = ''
     quantidade.value = ''
+    addEventoDelete()
 })
 
 document.querySelector('#nomeReceita').addEventListener('input', (e) => {
@@ -34,3 +35,17 @@ document.querySelector('#descricao').addEventListener('input', (e) => {
         descricao: e.target.value
     })
 })
+
+const addEventoDelete = () => {
+    getReceita(location.hash.substring(1)).ingredientes.forEach(ingrediente => {
+        const receitaId = location.hash.substring(1)
+        document.querySelector(`#${ingrediente.id}`).addEventListener('click', () => {
+            removeIngrediente(receitaId, ingrediente.id)
+            renderIngredientes(getReceita(receitaId).ingredientes)
+            addEventoDelete()
+        })
+    
+    });
+}
+
+addEventoDelete()
