@@ -15,6 +15,7 @@ document.querySelector('#addIgrediente').addEventListener('click', (e) => {
         quantidade: quantidade.value,
         "tenho": true
     }
+    
     addIngredientes(receitaId, novosIngredientes)
     renderIngredientes(getReceita(receitaId).ingredientes)
     nome.value = ''
