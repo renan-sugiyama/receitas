@@ -18,7 +18,3 @@ receitas.forEach(receita => {
     })
 
 });
-
-
-//const store = JSON.stringify(receitas.getReceitas())
-//localStorage.setItem('receitas', store);
