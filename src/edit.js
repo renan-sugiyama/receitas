@@ -1,5 +1,5 @@
 import { iniciaEditPage, renderIngredientes } from './views'
-import { getReceita, addIngredientes } from './receitas'
+import { getReceita, addIngredientes, saveReceitas, atualizaReceita } from './receitas'
 import uuidv4 from 'uuid/v4'
 
 
@@ -16,9 +16,14 @@ document.querySelector('#addIgrediente').addEventListener('click', (e) => {
         "tenho": true
     }
     addIngredientes(receitaId, novosIngredientes)
-    console.log(getReceita(receitaId))
     renderIngredientes(getReceita(receitaId).ingredientes)
-    console.log(nome)
     nome.value = ''
     quantidade.value = ''
+})
+
+document.querySelector('#nomeReceita').addEventListener('input', (e) => {
+    const id = location.hash.substring(1)
+    atualizaReceita(id, {
+        nome: e.target.value
+    })
 })

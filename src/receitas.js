@@ -73,7 +73,19 @@ const saveReceitas = () => {
 }
 
 const atualizaReceita = (id, updates) => {
+    const receita = receitas.find((rec)=>{
+        return rec.id === id
+    })
 
+    if(!receita) {
+        return
+    }
+
+    if(updates.nome) {
+        receita.nome = updates.nome
+    }
+
+    saveReceitas()
 }
 
 const addIngredientes = (receitaId, ingredientes) => {
@@ -87,4 +99,4 @@ const addIngredientes = (receitaId, ingredientes) => {
 
 receitas = getReceitas()
 
-export {getReceitas, removeReceita, novaReceita, saveReceitas, addIngredientes, getReceita}
+export {getReceitas, removeReceita, novaReceita, saveReceitas, addIngredientes, getReceita, atualizaReceita}
