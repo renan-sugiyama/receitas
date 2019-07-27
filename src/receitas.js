@@ -110,9 +110,20 @@ const removeIngrediente = (receitaId, ingredienteId) => {
     
     receita.ingredientes.splice(ingredienteIndex, 1)
     saveReceitas()
+}
 
+const atualizaIngrediente = (receitaId, ingredienteId, update) => {
+    const receita = receitas.find((receita) => {
+        return receita.id === receitaId
+    })
+
+    const ingredienteIndex = receita.ingredientes.findIndex((ingrediente) => {
+        return ingrediente.id === ingredienteId
+    })
+    receita.ingredientes[ingredienteIndex].tenho = update
+    saveReceitas()
 }
 
 receitas = getReceitas()
 
-export {getReceitas, removeReceita, novaReceita, saveReceitas, addIngredientes, getReceita, atualizaReceita, removeIngrediente}
+export {getReceitas, removeReceita, novaReceita, saveReceitas, addIngredientes, getReceita, atualizaReceita, removeIngrediente, atualizaIngrediente}

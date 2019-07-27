@@ -56,7 +56,7 @@ const renderIngredientes = (ingredientes) => {
             
             ingredienteHtml += 
             `<div class="col-md-9">
-                <input type="checkbox" name="" id="ingrediente#${ingrediente.id}" ${ingrediente.tenho === true ? 'checked' : ''} autocomplete="off">                                    
+                <input type="checkbox" name="checkbox" id="ingrediente#${ingrediente.id}" ${ingrediente.tenho === true ? 'checked' : ''} autocomplete="off">                                    
                 <span>${ingrediente.quantidade} - </span>
                 <span>${ingrediente.nome}</span>
             </div>

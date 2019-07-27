@@ -1,5 +1,5 @@
 import { iniciaEditPage, renderIngredientes } from './views'
-import { getReceita, addIngredientes, atualizaReceita, removeIngrediente, getReceitas } from './receitas'
+import { getReceita, addIngredientes, atualizaReceita, removeIngrediente, getReceitas, atualizaIngrediente } from './receitas'
 import uuidv4 from 'uuid/v4'
 
 
@@ -20,6 +20,7 @@ document.querySelector('#addIgrediente').addEventListener('click', (e) => {
     nome.value = ''
     quantidade.value = ''
     addEventoDelete()
+    addEventoCheckbox()
 })
 
 document.querySelector('#nomeReceita').addEventListener('input', (e) => {
@@ -48,4 +49,16 @@ const addEventoDelete = () => {
     });
 }
 
+const addEventoCheckbox = () => {
+    const receitaId = location.hash.substring(1)
+    document.querySelectorAll("input[name=checkbox]").forEach((element)=>{
+        element.addEventListener('change', (e) => {    
+            const ingredienteId = element.id.substring(12)
+            atualizaIngrediente(receitaId, ingredienteId, e.target.checked)
+        })
+    })
+    
+}
+
 addEventoDelete()
+addEventoCheckbox()
