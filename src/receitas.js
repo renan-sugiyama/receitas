@@ -32,7 +32,13 @@ import uuidv4 from 'uuid/v4'
 let receitas = []
 
 const getReceitas = () => {
-    return JSON.parse(localStorage.getItem('receitas'));
+    const JSONreceitas = JSON.parse(localStorage.getItem('receitas'))
+    if (JSONreceitas === null) {
+        saveReceitas()
+        return []
+    } else {
+        return JSONreceitas;
+    }    
 }
 
 const getReceita = (id) => {
