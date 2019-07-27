@@ -83,6 +83,8 @@ const atualizaReceita = (id, updates) => {
 
     if(updates.nome) {
         receita.nome = updates.nome
+    }else if(updates.descricao) {
+        receita.descricao = updates.descricao
     }
 
     saveReceitas()

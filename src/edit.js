@@ -27,3 +27,10 @@ document.querySelector('#nomeReceita').addEventListener('input', (e) => {
         nome: e.target.value
     })
 })
+
+document.querySelector('#descricao').addEventListener('input', (e) => {
+    const id = location.hash.substring(1)
+    atualizaReceita(id, {
+        descricao: e.target.value
+    })
+})
