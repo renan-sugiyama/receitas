@@ -16,7 +16,7 @@ const iniciaHomePage = () => {
                     <a href="./edit.html#${receita.id}" class="btn btn-primary">Visualizar</a>
                 </div>
                 <div class="col d-flex justify-content-end align-items-center">
-                    <a href="#" id="${receita.id}" class="trash"><i class="fas fa-trash-alt"></i></a>
+                    <a href="#" id="${receita.id}" class="trash"  data-toggle="modal" data-target="#modalDeleteReceita"><i class="fas fa-trash-alt"></i></a>
                 </div>
                 </div>
             </div>
