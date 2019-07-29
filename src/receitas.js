@@ -113,7 +113,7 @@ const removeIngrediente = (receitaId, ingredienteId) => {
     const ingredienteIndex = receita.ingredientes.findIndex((ingrediente) => {
         return ingrediente.id === ingredienteId
     })
-    
+
     receita.ingredientes.splice(ingredienteIndex, 1)
     saveReceitas()
 }

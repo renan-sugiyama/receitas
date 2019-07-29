@@ -20,7 +20,7 @@ document.querySelector('#addIgrediente').addEventListener('click', (e) => {
     renderIngredientes(getReceita(receitaId).ingredientes)
     nome.value = ''
     quantidade.value = ''
-    addEventoDelete()
+    //addEventoDelete()
     addEventoCheckbox()
 })
 
@@ -38,17 +38,32 @@ document.querySelector('#descricao').addEventListener('input', (e) => {
     })
 })
 
-const addEventoDelete = () => {
-    getReceita(location.hash.substring(1)).ingredientes.forEach(ingrediente => {
-        const receitaId = location.hash.substring(1)
-        document.querySelector(`#${ingrediente.id}`).addEventListener('click', () => {
-            removeIngrediente(receitaId, ingrediente.id)
-            renderIngredientes(getReceita(receitaId).ingredientes)
-            addEventoDelete()
-        })
+// const addEventoDelete = () => {
+//     getReceita(location.hash.substring(1)).ingredientes.forEach(ingrediente => {
+//         const receitaId = location.hash.substring(1)
+//         document.querySelector(`#${ingrediente.id}`).addEventListener('click', () => {
+//             document.querySelector('#modalBtnDeletar').addEventListener('click', ()=>{
+//                 removeIngrediente(receitaId, ingrediente.id)
+//                 renderIngredientes(getReceita(receitaId).ingredientes)
+//                 addEventoDelete()
+//                 $('#modalDelete').modal('hide');
+//             })
+//         })
     
-    });
-}
+//     });
+// }
+$('#modalDelete').on('show.bs.modal', function(e) {
+    const ingredienteId = e.relatedTarget.id
+    const receitaId = location.hash.substring(1)
+
+    document.querySelector("#modalBtnDeletar").onclick = () =>{
+        removeIngrediente(receitaId, ingredienteId)
+        renderIngredientes(getReceita(receitaId).ingredientes)
+        $('#modalDelete').modal('hide');
+    }
+})
+
+
 
 const addEventoCheckbox = () => {
     const receitaId = location.hash.substring(1)
@@ -61,5 +76,5 @@ const addEventoCheckbox = () => {
     
 }
 
-addEventoDelete()
+//addEventoDelete()
 addEventoCheckbox()

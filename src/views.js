@@ -101,10 +101,9 @@ const renderIngredientes = (ingredientes) => {
                 <span>${ingrediente.nome}</span>
             </div>
             <div class="col-md-3">
-                <span id="${ingrediente.id}">Deletar</span>
+                <span id="${ingrediente.id}" data-toggle="modal" data-target="#modalDelete">Deletar</span>
             </div>`
         });
-        console.log(ingredienteHtml)
         
         listaIngredientes.innerHTML = ingredienteHtml
     }
