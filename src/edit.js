@@ -89,6 +89,7 @@ $('#modalDelete').on('show.bs.modal', function(e) {
     document.querySelector("#modalBtnDeletar").onclick = () =>{
         removeIngrediente(receitaId, ingredienteId)
         renderIngredientes(getReceita(receitaId).ingredientes)
+        addEventoCheckbox()
         $('#modalDelete').modal('hide');
     }
 })
