@@ -7,7 +7,7 @@ const iniciaHomePage = () => {
     receitas.forEach((receita, index) => {
         receitaElement.innerHTML +=
         `<div class="col-md-4 py-3">
-            <div class="card" style="width: 18rem;">
+            <div class="card">
             <div class="card-body">
                 <h5 class="card-title">${receita.nome}</h5>
                 <p class="card-text">${criaFrase(verificaQtdIngredientes())[index]}</p>
@@ -90,7 +90,7 @@ const renderIngredientes = (ingredientes) => {
     const listaIngredientes = document.querySelector('#lista-ingredientes')
     
     if(ingredientes.length === 0) {
-        listaIngredientes.innerHTML = `<div class="col-md-9">Nenhum ingrediente cadastrado</div>`
+        listaIngredientes.innerHTML = `<div class="col-md-9 msg-padrao">Nenhum ingrediente cadastrado</div>`
     }else {
         ingredientes.forEach(ingrediente => {
             
@@ -99,9 +99,10 @@ const renderIngredientes = (ingredientes) => {
                 <input type="checkbox" name="checkbox" id="ingrediente#${ingrediente.id}" ${ingrediente.tenho === true ? 'checked' : ''} autocomplete="off">                                    
                 <span>${ingrediente.quantidade} - </span>
                 <span>${ingrediente.nome}</span>
+                <hr>
             </div>
             <div class="col-md-3">
-                <span id="${ingrediente.id}">Deletar</span>
+                <span id="${ingrediente.id}" data-toggle="modal" data-target="#modalDelete"><i class="fas fa-trash-alt trash-edit"></i></span>
             </div>`
         });
         console.log(ingredienteHtml)

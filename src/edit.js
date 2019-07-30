@@ -7,7 +7,10 @@ iniciaEditPage()
 
 document.querySelector('#addIgrediente').addEventListener('click', (e) => {
     let nome = document.querySelector('#ingrediente-nome')
-    let quantidade = document.querySelector('#ingrediente-quantidade') 
+    let quantidade = document.querySelector('#ingrediente-quantidade')
+    if(!validaFormIngrediente(nome.value, quantidade.value)){        
+        return
+    }
     const receitaId = location.hash.substring(1)
     const novosIngredientes = {
         id: 'i' + uuidv4(),
@@ -23,6 +26,33 @@ document.querySelector('#addIgrediente').addEventListener('click', (e) => {
     addEventoDelete()
     addEventoCheckbox()
 })
+
+document.querySelector('#ingrediente-nome').addEventListener('input', (e) => {
+    if(e.target.value !== '') {
+        document.querySelector('#validate-nome').className = 'invisible validade-form'
+    }
+})
+
+document.querySelector('#ingrediente-quantidade').addEventListener('input', (e) => {
+    if(e.target.value !== '') {
+        document.querySelector('#validate-qtd').className = 'invisible validade-form'
+    }
+})
+
+const validaFormIngrediente = (nome, quantidade) => {
+    console.log(nome)
+    if(nome === '') {
+        document.querySelector('#validate-nome').classList.remove('invisible')
+        return false
+    }else if(quantidade === '') {
+        document.querySelector('#validate-qtd').classList.remove('invisible')
+        return false
+    }else {
+        return true
+    }
+}
+
+
 
 document.querySelector('#nomeReceita').addEventListener('input', (e) => {
     const id = location.hash.substring(1)
