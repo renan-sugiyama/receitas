@@ -105,7 +105,6 @@ const renderIngredientes = (ingredientes) => {
                 <span id="${ingrediente.id}" data-toggle="modal" data-target="#modalDelete"><i class="fas fa-trash-alt trash-edit"></i></span>
             </div>`
         });
-        console.log(ingredienteHtml)
         
         listaIngredientes.innerHTML = ingredienteHtml
     }
