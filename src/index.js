@@ -3,7 +3,7 @@ import { iniciaHomePage } from './views'
 
 const receitas = getReceitas()
 
-iniciaHomePage()
+iniciaHomePage(document.querySelector('#ordenarReceitas').value)
 
 document.querySelector('#btnAddReceita').addEventListener('click', () => {
     const id = novaReceita()
@@ -19,10 +19,15 @@ document.querySelector('#btnAddReceita').addEventListener('click', () => {
 
 // });
 
+document.querySelector('#ordenarReceitas').addEventListener('change', (e) => {
+    iniciaHomePage(e.target.value)
+})
+
 $('#modalDeleteReceita').on('show.bs.modal', function(e) {
     const receitaId = e.relatedTarget.id
     document.querySelector("#modalBtnDeletar").onclick = () =>{
         removeReceita(receitaId)
-        location.assign('/')
+        iniciaHomePage()
+        $('#modalDeleteReceita').modal('hide')
     }
 })

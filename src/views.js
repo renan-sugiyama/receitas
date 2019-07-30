@@ -1,7 +1,7 @@
-import { getReceitas } from './receitas'
+import { getReceitas, sortReceitas } from './receitas'
 
-const iniciaHomePage = () => {
-    const receitas = getReceitas()
+const iniciaHomePage = (sortBy) => {
+    const receitas = sortReceitas(sortBy)
     let receitaElement = document.querySelector('#cards-receitas')
     receitaElement.innerHTML = ''
     receitas.forEach((receita, index) => {
