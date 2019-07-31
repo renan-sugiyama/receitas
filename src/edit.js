@@ -85,4 +85,8 @@ const addEventoCheckbox = () => {
     
 }
 
+document.querySelector('#btnGoHome').addEventListener('click', () => {
+    location.assign(`/index.html`)
+})
+
 addEventoCheckbox()
