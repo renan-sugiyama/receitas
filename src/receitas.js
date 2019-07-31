@@ -1,36 +1,5 @@
 import uuidv4 from 'uuid/v4'
 
-// let receitas = [
-//     {
-//         id: '65461346546',
-//         nome: 'pamonha',
-//         descricao: 'bata tudo no liquidificador',
-//         criado_em: 'xxxx'
-//         atualizado_em: 'xxx'
-//         ingredientes: [
-//             {
-//                 nome: 'milho',
-//                 quantidade: '3 un'
-//             }
-//         ]
-//     },
-//     {
-//         id: 'kçljaçlkja78a46a4',
-//         nome: 'brigadeiro',
-//         descricao: 'misture tudo em uma panela e deixe aquecer',
-//         ingredientes: [
-//             {
-//                 nome: 'leite condensado',
-//                 quantidade: '1 lata'
-//             },
-//             {
-//                 nome: 'leite',
-//                 quantidade: '1 lata'
-//             }
-//         ],
-//     }
-// ]
-
 let receitas = []
 
 const getReceitas = () => {
@@ -44,21 +13,15 @@ const getReceitas = () => {
 }
 
 const getReceita = (id) => {
-    return getReceitas().find((receita)=>{
-        return receita.id === id
-    });
+    return getReceitas().find((receita) => receita.id === id);
 }
 
-
 const removeReceita = (id) => {
-    const receitaIndex = receitas.findIndex((receita) => {
-        return receita.id === id
-    })
+    const receitaIndex = receitas.findIndex((receita) => receita.id === id)
     if (receitaIndex > -1) {
         receitas.splice(receitaIndex, 1)        
         saveReceitas()
     }
-    
 }
 
 const novaReceita = () => {
@@ -80,9 +43,7 @@ const saveReceitas = () => {
 }
 
 const atualizaReceita = (id, updates) => {
-    const receita = receitas.find((rec)=>{
-        return rec.id === id
-    })
+    const receita = receitas.find((rec)=> rec.id === id)
 
     if(!receita) {
         return
@@ -95,37 +56,26 @@ const atualizaReceita = (id, updates) => {
         receita.descricao = updates.descricao
         receita.atualizado_em = Date.now()
     }
-
     saveReceitas()
 }
 
 const addIngredientes = (receitaId, ingredientes) => {
-    const receitaUpdate = receitas.find((receita) => {
-        return receita.id === receitaId
-    })
+    const receitaUpdate = receitas.find((receita) => receita.id === receitaId)
     receitaUpdate.atualizado_em = Date.now()
     receitaUpdate.ingredientes.push(ingredientes)
     saveReceitas()
 }
 
 const removeIngrediente = (receitaId, ingredienteId) => {
-    const receita = receitas.find((receita) => {
-        return receita.id === receitaId
-    })
-
-    const ingredienteIndex = receita.ingredientes.findIndex((ingrediente) => {
-        return ingrediente.id === ingredienteId
-    })
+    const receita = receitas.find((receita) => receita.id === receitaId)
+    const ingredienteIndex = receita.ingredientes.findIndex((ingrediente) => ingrediente.id === ingredienteId)
     receita.atualizado_em = Date.now()
     receita.ingredientes.splice(ingredienteIndex, 1)
     saveReceitas()
 }
 
 const atualizaIngrediente = (receitaId, ingredienteId, update) => {
-    const receita = receitas.find((receita) => {
-        return receita.id === receitaId
-    })
-
+    const receita = receitas.find((receita) => receita.id === receitaId)
     const ingredienteIndex = receita.ingredientes.findIndex((ingrediente) => {
         return ingrediente.id === ingredienteId
     })
@@ -180,8 +130,7 @@ receitas = getReceitas()
 export {
     getReceitas, 
     removeReceita,
-    novaReceita, 
-    saveReceitas, 
+    novaReceita,  
     addIngredientes, 
     getReceita, 
     atualizaReceita, 

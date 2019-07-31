@@ -1,7 +1,6 @@
 import { iniciaEditPage, renderIngredientes } from './views'
-import { getReceita, addIngredientes, atualizaReceita, removeIngrediente, getReceitas, atualizaIngrediente } from './receitas'
+import { getReceita, addIngredientes, atualizaReceita, removeIngrediente, atualizaIngrediente } from './receitas'
 import uuidv4 from 'uuid/v4'
-
 
 iniciaEditPage()
 
@@ -18,12 +17,10 @@ document.querySelector('#addIgrediente').addEventListener('click', (e) => {
         quantidade: quantidade.value,
         "tenho": true
     }
-    
     addIngredientes(receitaId, novosIngredientes)
     renderIngredientes(getReceita(receitaId).ingredientes)
     nome.value = ''
     quantidade.value = ''
-    //addEventoDelete()
     addEventoCheckbox()
 })
 
@@ -40,7 +37,6 @@ document.querySelector('#ingrediente-quantidade').addEventListener('input', (e) 
 })
 
 const validaFormIngrediente = (nome, quantidade) => {
-    console.log(nome)
     if(nome === '') {
         document.querySelector('#validate-nome').classList.remove('invisible')
         return false
@@ -51,8 +47,6 @@ const validaFormIngrediente = (nome, quantidade) => {
         return true
     }
 }
-
-
 
 document.querySelector('#nomeReceita').addEventListener('input', (e) => {
     const id = location.hash.substring(1)
@@ -68,20 +62,6 @@ document.querySelector('#descricao').addEventListener('input', (e) => {
     })
 })
 
-// const addEventoDelete = () => {
-//     getReceita(location.hash.substring(1)).ingredientes.forEach(ingrediente => {
-//         const receitaId = location.hash.substring(1)
-//         document.querySelector(`#${ingrediente.id}`).addEventListener('click', () => {
-//             document.querySelector('#modalBtnDeletar').addEventListener('click', ()=>{
-//                 removeIngrediente(receitaId, ingrediente.id)
-//                 renderIngredientes(getReceita(receitaId).ingredientes)
-//                 addEventoDelete()
-//                 $('#modalDelete').modal('hide');
-//             })
-//         })
-    
-//     });
-// }
 $('#modalDelete').on('show.bs.modal', function(e) {
     const ingredienteId = e.relatedTarget.id
     const receitaId = location.hash.substring(1)
@@ -94,8 +74,6 @@ $('#modalDelete').on('show.bs.modal', function(e) {
     }
 })
 
-
-
 const addEventoCheckbox = () => {
     const receitaId = location.hash.substring(1)
     document.querySelectorAll("input[name=checkbox]").forEach((element)=>{
@@ -107,5 +85,4 @@ const addEventoCheckbox = () => {
     
 }
 
-//addEventoDelete()
 addEventoCheckbox()
