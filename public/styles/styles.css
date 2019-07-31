@@ -88,3 +88,25 @@ label {
 .validade-form {
     font-size: .8rem;
 }
+
+/* media query */
+
+/* Medium devices (768px and down) */
+@media (max-width: 768px) { 
+    #titulo {
+        font-size: 2rem;
+        letter-spacing: 2px;
+    }
+
+    .titulo__descricao {
+        display: none;
+    }
+
+    .btn-home, .btn-add {
+        bottom: 30px;
+    }
+
+    .msg-padrao {
+        font-size: 1rem;
+    }
+ }
