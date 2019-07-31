@@ -95,13 +95,13 @@ const renderIngredientes = (ingredientes) => {
         ingredientes.forEach(ingrediente => {
             
             ingredienteHtml += 
-            `<div class="col-md-9">
+            `<div class="col-7 col-md-9">
                 <input type="checkbox" name="checkbox" id="ingrediente#${ingrediente.id}" ${ingrediente.tenho === true ? 'checked' : ''} autocomplete="off">                                    
                 <span>${ingrediente.quantidade} - </span>
                 <span>${ingrediente.nome}</span>
                 <hr>
             </div>
-            <div class="col-md-3">
+            <div class="col-3">
                 <span id="${ingrediente.id}" data-toggle="modal" data-target="#modalDelete"><i class="fas fa-trash-alt trash-edit"></i></span>
             </div>`
         });
