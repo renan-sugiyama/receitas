@@ -14,94 +14,88 @@
     <title>Document</title>
   </head>
   <body>
-      <div class="container">
-        <header>
-          <div class="row mt-5 py-4">
-            <div class="col">
-                <div id="titulo">
-                    Editar Receita
-                </div>
-            </div>
+    <div class="container">
+      <header>
+        <div class="row mt-5 py-4">
+          <div class="col">
+              <div id="titulo">
+                  Editar Receita
+              </div>
           </div>
-        </header>
-
-        <section class="receitas">
-          <div class="row">
-            <div class="col-md-12">
-                  
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label for="nomeReceita">Nome</label>
-                                <input type="text" class="form-control" id="nomeReceita" placeholder="Nome da receita">
+        </div>
+      </header>
+      <section class="receitas">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="nomeReceita">Nome</label>
+                        <input type="text" class="form-control" id="nomeReceita" placeholder="Nome da receita">
+                    </div>
+                    <div class="form-group">
+                        <label for="descricao">Descrição</label>
+                        <textarea class="form-control" id="descricao" rows="5"></textarea>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-md-8">
+                            <input type="text" class="form-control" id="ingrediente-nome" placeholder="Novo ingrediente" required>
+                            <div id="validate-nome" class="invisible validade-form">
+                                Campo obrigatório
                             </div>
-                            <div class="form-group">
-                                <label for="descricao">Descrição</label>
-                                <textarea class="form-control" id="descricao" rows="5"></textarea>
-                            </div>
-                            <div class="row mb-3">
-                                <div class="col-md-8">
-                                    <input type="text" class="form-control" id="ingrediente-nome" placeholder="Novo ingrediente" required>
-                                    <div id="validate-nome" class="invisible validade-form">
-                                        Campo obrigatório
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <input type="text" class="form-control" id="ingrediente-quantidade" placeholder="Qtd" required>
-                                    <div id="validate-qtd" class="invisible validade-form">
-                                        Campo obrigatório
-                                    </div>
-                                </div>
-                            </div>
-                            <button class="btn btn-primary" id="addIgrediente">Adicionar Ingrediente</button>
                         </div>
-                        <div class="col-md-6">
-                            <div>Lista de ingredientes</div>
-                            <div class="row" id="lista-ingredientes">
-                                <div class="col-md-9">
-                                    Nenhum ingrediente cadastrado
-                                </div>
+                        <div class="col-md-4">
+                            <input type="text" class="form-control" id="ingrediente-quantidade" placeholder="Qtd" required>
+                            <div id="validate-qtd" class="invisible validade-form">
+                                Campo obrigatório
                             </div>
                         </div>
                     </div>
-
-                    <div class="btn-home">
-                      <a href="./index.html"><i class="fas fa-home"></i></a>
-                    </div>                   
+                    <button class="btn btn-primary" id="addIgrediente">Adicionar Ingrediente</button>
+                </div>
+                <div class="col-md-6">
+                    <div>Lista de ingredientes</div>
+                    <div class="row" id="lista-ingredientes">
+                        <div class="col-md-9">
+                            Nenhum ingrediente cadastrado
+                        </div>
+                    </div>
+                </div>
             </div>
+            <div class="btn-home">
+              <a href="./index.html"><i class="fas fa-home"></i></a>
+            </div>                   
           </div>
-        </section>
-
-      </div>
-
-    <!-- Button trigger modal -->
-
-  <!-- Modal Alert para deletar ingrediente -->
-  <div class="modal fade" id="modalDelete" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLongTitle">Confirmar</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
         </div>
-        <div class="modal-body">
-          Quer mesmo excluir este ingrediente?
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-          <button type="button" class="btn btn-primary" id="modalBtnDeletar">Deletar</button>
+      </section>
+    </div>
+
+    <!-- Modal Alert para deletar ingrediente -->
+    <div class="modal fade" id="modalDelete" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLongTitle">Confirmar</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            Quer mesmo excluir este ingrediente?
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+            <button type="button" class="btn btn-primary" id="modalBtnDeletar">Deletar</button>
+          </div>
         </div>
       </div>
     </div>
-  </div>
 
 
-      <!-- bootstrap js -->
-      <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-      <script src="./scripts/edit.bundler.js"></script>
+    <!-- bootstrap js -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="./scripts/edit.bundler.js"></script>
   </body>
 </html>

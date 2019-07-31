@@ -3,7 +3,6 @@
     font-family: 'Alegreya', serif;
 }
 
-
 .container {
     
     background: linear-gradient(40deg,#45aaac,#303f9f)!important;
@@ -30,7 +29,6 @@
 }
 
 /* css home */
-
 .btn-primary {
     background: linear-gradient(40deg,#459a9c,#303f9f)!important;
     box-shadow: 0 5px 11px 0 rgba(0,0,0,.18),0 4px 15px 0 rgba(0,0,0,.15)!important;
@@ -86,7 +84,6 @@ label {
 .trash-edit:hover {
     color: #b9b9b9;
 }
-
 
 .validade-form {
     font-size: .8rem;
